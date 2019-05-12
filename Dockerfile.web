@@ -18,6 +18,4 @@ WORKDIR /app
 
 RUN deno fetch app.ts
 
-ENTRYPOINT ["deno"]
-
-CMD ["run", "--allow-net", "--allow-read", "app.ts"]
+CMD deno run --allow-net --allow-read app.ts -p $PORT
