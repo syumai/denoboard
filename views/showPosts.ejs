@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <style>
+      .form {
+        display: flex;
+      }
+    </style>
+    <title>Denoboard</title>
+  </head>
+  <body>
+    <h1>Denoboard</h1>
+    <div class="form">
+      <form action="/posts" method="POST">
+        <label for="name">Name</label><br />
+        <input type="text" name="name" /><br />
+        <label for="body">Message</label><br />
+        <input type="text" name="body" /><br />
+        <button>Submit</button>
+      </form>
+    </div>
+    <hr />
+    <div class="posts">
+      <% for (let post of posts) { %>
+      <div class="post">
+        <div class="post-header">
+          <div class="post-name"><%= post.name %></div>
+          <div class="post-date"><%= post.createdAt %></div>
+        </div>
+        <div class="post-body"><%= post.body %></div>
+      </div>
+      <% } %>
+    </div>
+  </body>
+</html>
