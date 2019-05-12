@@ -1,6 +1,10 @@
 # Denoboard
 
-- bulletin board application implemented in Deno.
+- message board application implemented in Deno.
+
+## Demo
+
+https://denoboard.herokuapp.com/posts
 
 ## Usage
 
