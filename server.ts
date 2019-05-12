@@ -11,6 +11,7 @@ export class Server {
     const getPosts = new GetPosts(this.postsRepo);
     const posts = getPosts.invoke();
     return await renderFile('./views/showPosts.ejs', {
+      name: '',
       posts,
     });
   }
@@ -23,6 +24,7 @@ export class Server {
     return [
       201,
       await renderFile('./views/showPosts.ejs', {
+        name,
         posts,
       }),
     ];

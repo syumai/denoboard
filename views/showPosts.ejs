@@ -20,12 +20,14 @@
     <div class="form-container">
       <img class="deno-logo" src="https://deno.land/images/deno_logo_3.svg" />
       <form class="post-form" action="/posts" method="POST">
+        <% if (name) { %>
         <input
           type="text"
           id="postName"
           name="name"
           placeholder="name"
-          maxlength="500"
+          maxlength="20"
+          value="<%= name %>"
           required
         />
         <input
@@ -33,9 +35,28 @@
           id="postFormBody"
           name="body"
           placeholder="message"
-          maxlength="500"
+          maxlength="100"
+          autofocus
           required
         />
+        <% } else { %>
+        <input
+          type="text"
+          id="postName"
+          name="name"
+          placeholder="name"
+          maxlength="20"
+          required
+        />
+        <input
+          type="text"
+          id="postFormBody"
+          name="body"
+          placeholder="message"
+          maxlength="100"
+          required
+        />
+        <% } %>
         <button>Submit</button>
       </form>
     </div>
