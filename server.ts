@@ -7,7 +7,7 @@ import { Response } from 'https://denopkg.com/syumai/dinatra/response.ts';
 export class Server {
   constructor(private postsRepo: PostsRepository) {}
 
-  async showPosts(): Promise<Response> {
+  async showPosts() {
     const getPosts = new GetPosts(this.postsRepo);
     const posts = getPosts.invoke();
     return await renderFile('./views/showPosts.ejs', {
@@ -15,9 +15,16 @@ export class Server {
     });
   }
 
-  createPost({ name, body }: { name: string; body: string }): Response {
+  async createPost({ name, body }: { name: string; body: string }) {
     const createPost = new CreatePost(this.postsRepo);
-    const post = createPost.invoke(name, body);
-    return [201, contentType('json'), JSON.stringify(post)];
+    createPost.invoke(name, body);
+    const getPosts = new GetPosts(this.postsRepo);
+    const posts = getPosts.invoke();
+    return [
+      201,
+      await renderFile('./views/showPosts.ejs', {
+        posts,
+      }),
+    ];
   }
 }

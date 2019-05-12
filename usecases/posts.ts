@@ -14,7 +14,7 @@ export class GetPosts {
 
   invoke(): Post[] {
     const posts: Post[] = [...this.repo.getPosts()];
-    posts.sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime());
+    posts.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
     return posts;
   }
 }
