@@ -1,0 +1,48 @@
+body {
+  margin: 16px;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+}
+
+.deno-logo {
+  width: 64px;
+  height: 64px;
+}
+
+.post-form {
+  display: flex;
+}
+
+.post-form button,
+.post-form input {
+  margin: 4px;
+}
+
+.post {
+  padding: 6px;
+}
+
+.post .post-header {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 3px;
+}
+
+.post .post-header .post-header-name {
+  font-weight: bold;
+  margin-right: 6px;
+  font-size: 16px;
+}
+
+.post .post-header .post-header-date {
+  cursor: default;
+  color: #999;
+  font-size: 14px;
+}
+
+.post .post-body {
+  font-size: 18px;
+}

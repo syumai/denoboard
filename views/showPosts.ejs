@@ -4,21 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <style>
-      .form {
-        display: flex;
-      }
-    </style>
+    <link
+      href="https://unpkg.com/normalize.css@8.0.1/normalize.css"
+      rel="stylesheet"
+    />
+    <link href="/app.css" rel="stylesheet" />
     <title>Denoboard</title>
   </head>
   <body>
     <h1>Denoboard</h1>
-    <div class="form">
-      <form action="/posts" method="POST">
-        <label for="name">Name</label><br />
-        <input type="text" name="name" /><br />
-        <label for="body">Message</label><br />
-        <input type="text" name="body" /><br />
+    <div class="form-container">
+      <img class="deno-logo" src="https://deno.land/images/deno_logo_3.svg" />
+      <form class="post-form" action="/posts" method="POST">
+        <input type="text" id="postName" name="name" placeholder="name" />
+        <input
+          type="text"
+          id="postFormBody"
+          name="body"
+          placeholder="message"
+        />
         <button>Submit</button>
       </form>
     </div>
@@ -27,8 +31,8 @@
       <% for (let post of posts) { %>
       <div class="post">
         <div class="post-header">
-          <div class="post-name"><%= post.name %></div>
-          <div class="post-date"><%= post.createdAt %></div>
+          <div class="post-header-name"><%= post.name %></div>
+          <div class="post-header-date"><%= post.createdAt %></div>
         </div>
         <div class="post-body"><%= post.body %></div>
       </div>
