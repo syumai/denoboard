@@ -1,17 +1,18 @@
 import { Post } from '../domain/post.ts';
 import { PostsRepository } from '../repositories/posts.ts';
 
-const strMax = 500;
+const nameMax = 20;
+const bodyMax = 100;
 
 export class CreatePost {
   constructor(private repo: PostsRepository) {}
 
   invoke(name: string, body: string): Post {
-    if (!name || name.length > strMax) {
+    if (!name || name.length > nameMax) {
       // TODO: Add error msg
       throw 400;
     }
-    if (!body || body.length > strMax) {
+    if (!body || body.length > bodyMax) {
       // TODO: Add error msg
       throw 400;
     }
