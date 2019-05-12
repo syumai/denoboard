@@ -2,6 +2,7 @@ import { Post } from '../domain/post.ts';
 import { uuid } from 'https://deno.land/x/uuid/mod.ts';
 
 const maxMinutes = 3;
+const maxPosts = 50;
 
 export type PostsRepository = {
   getPosts(): Post[];
@@ -32,6 +33,11 @@ export class PostsMemoryRepository {
       createdAt: new Date(),
     };
     this.store.posts.push(post);
+    if (this.store.posts.length > maxPosts) {
+      this.store.posts = this.store.posts.slice(
+        this.store.posts.length - maxPosts
+      );
+    }
     return post;
   }
 }
