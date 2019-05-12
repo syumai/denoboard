@@ -16,6 +16,11 @@ a:hover {
   align-items: center;
 }
 
+.notice {
+  color: #999;
+  font-size: 12px;
+}
+
 .deno-logo {
   width: 64px;
   height: 64px;
