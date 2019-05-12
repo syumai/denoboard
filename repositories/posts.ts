@@ -1,7 +1,7 @@
 import { Post } from '../domain/post.ts';
 import { uuid } from 'https://deno.land/x/uuid/mod.ts';
 
-const maxMinutes = 3;
+const maxMinutes = 5;
 const maxPosts = 50;
 
 export type PostsRepository = {

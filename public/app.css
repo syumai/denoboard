@@ -19,6 +19,12 @@ a:hover {
 .notice {
   color: #999;
   font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.github a {
+  font-weight: bold;
+  font-size: 12px;
 }
 
 .deno-logo {
