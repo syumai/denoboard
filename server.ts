@@ -1,8 +1,8 @@
 import { PostsRepository } from './repositories/posts.ts';
 import { GetPosts, CreatePost } from './usecases/posts.ts';
 import { renderFile } from 'https://deno.land/x/dejs@0.2.0/dejs.ts';
-import { Response } from 'https://denopkg.com/syumai/dinatra/response.ts';
-import { Params } from 'https://denopkg.com/syumai/dinatra/handler.ts';
+import { Response } from 'https://denopkg.com/syumai/dinatra@0.3.2/response.ts';
+import { Params } from 'https://denopkg.com/syumai/dinatra@0.3.2/handler.ts';
 
 export class Server {
   constructor(private postsRepo: PostsRepository) {}

@@ -1,12 +1,9 @@
 import { Post } from '../domain/post.ts';
 import { uuid } from 'https://deno.land/x/uuid/mod.ts';
 
-const maxMinutes = 5;
-const maxPosts = 50;
-
 export type PostsRepository = {
-  getPosts(): Post[];
-  createPost(name: string, body: string): Post;
+  getPosts(minutesLimit: number): Post[];
+  createPost(name: string, body: string, postsLimit: number): Post;
 };
 
 export class PostsMemoryRepository {
@@ -16,16 +13,16 @@ export class PostsMemoryRepository {
     posts: [],
   };
 
-  getPosts(): Post[] {
+  getPosts(minutesLimit: number): Post[] {
     const filterDate = new Date();
-    filterDate.setMinutes(new Date().getMinutes() - maxMinutes);
+    filterDate.setMinutes(new Date().getMinutes() - minutesLimit);
     this.store.posts = this.store.posts.filter(
       post => filterDate.getTime() < post.createdAt.getTime()
     );
     return [...this.store.posts];
   }
 
-  createPost(name: string, body: string): Post {
+  createPost(name: string, body: string, postsLimit: number): Post {
     const post = {
       id: uuid(),
       name,
@@ -33,9 +30,9 @@ export class PostsMemoryRepository {
       createdAt: new Date(),
     };
     this.store.posts.push(post);
-    if (this.store.posts.length > maxPosts) {
+    if (this.store.posts.length > postsLimit) {
       this.store.posts = this.store.posts.slice(
-        this.store.posts.length - maxPosts
+        this.store.posts.length - postsLimit
       );
     }
     return post;

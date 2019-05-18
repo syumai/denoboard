@@ -1,4 +1,8 @@
-import { app, get, post } from 'https://denopkg.com/syumai/dinatra/mod.ts';
+import {
+  app,
+  get,
+  post,
+} from 'https://denopkg.com/syumai/dinatra@0.3.2/mod.ts';
 import { PostsMemoryRepository } from './repositories/posts.ts';
 import { Server } from './server.ts';
 
