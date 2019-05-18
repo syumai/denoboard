@@ -16,7 +16,7 @@ deno run -A app.ts
 
 ```console
 docker build . -t denoboard:latest
-docker run -p 8080:8080 denoboard:latest
+docker run -p 8080:8080 -e PORT=8080 denoboard:latest
 ```
 
 ## Deployment

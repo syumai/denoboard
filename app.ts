@@ -2,9 +2,9 @@ import {
   app,
   get,
   post,
-} from 'https://denopkg.com/syumai/dinatra@0.3.2/mod.ts';
-import { PostsMemoryRepository } from './repositories/posts.ts';
-import { Server } from './server.ts';
+} from 'https://denopkg.com/syumai/dinatra@0.4.0/mod.ts';
+import { PostsMemoryRepository } from './src/repositories/posts.ts';
+import { Server } from './src/server.ts';
 
 const postsRepo = new PostsMemoryRepository();
 const server = new Server(postsRepo);
