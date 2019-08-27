@@ -1,5 +1,5 @@
 import { Post } from '../domain/post.ts';
-import { uuid } from 'https://deno.land/x/uuid/mod.ts';
+import { v4 } from '../../vendor/https/deno.land/std/uuid/mod.ts';
 
 export type PostsRepository = {
   getPosts(minutesLimit: number): Post[];
@@ -24,7 +24,7 @@ export class PostsMemoryRepository {
 
   createPost(name: string, body: string, postsLimit: number): Post {
     const post = {
-      id: uuid(),
+      id: v4(),
       name,
       body,
       createdAt: new Date(),
