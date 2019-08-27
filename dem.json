@@ -1,0 +1,31 @@
+{
+  "version": "0.1.0",
+  "modules": [
+    {
+      "protocol": "https",
+      "path": "deno.land/std",
+      "version": "v0.16.0",
+      "files": [
+        "/uuid/mod.ts"
+      ]
+    },
+    {
+      "protocol": "https",
+      "path": "deno.land/x/dejs",
+      "version": "0.3.1",
+      "files": [
+        "/mod.ts"
+      ]
+    },
+    {
+      "protocol": "https",
+      "path": "denopkg.com/syumai/dinatra",
+      "version": "0.6.0",
+      "files": [
+        "/mod.ts",
+        "/params.ts",
+        "/response.ts"
+      ]
+    }
+  ]
+}
