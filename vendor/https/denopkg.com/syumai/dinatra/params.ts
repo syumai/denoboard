@@ -1,1 +1,1 @@
-export * from 'https://denopkg.com/syumai/dinatra@0.6.0/params.ts';
+export * from 'https://denopkg.com/syumai/dinatra@0.8.2/params.ts';
