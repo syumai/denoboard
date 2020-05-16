@@ -1,5 +1,5 @@
-import { Post } from '../domain/post.ts';
-import { v4 } from '../../vendor/https/deno.land/std/uuid/mod.ts';
+import { Post } from "../domain/post.ts";
+import { v4 } from "../../vendor/https/deno.land/std/uuid/mod.ts";
 
 export type PostsRepository = {
   getPosts(minutesLimit: number): Post[];
@@ -17,14 +17,14 @@ export class PostsMemoryRepository {
     const filterDate = new Date();
     filterDate.setMinutes(new Date().getMinutes() - minutesLimit);
     this.store.posts = this.store.posts.filter(
-      post => filterDate.getTime() < post.createdAt.getTime()
+      (post) => filterDate.getTime() < post.createdAt.getTime(),
     );
     return [...this.store.posts];
   }
 
   createPost(name: string, body: string, postsLimit: number): Post {
-    const post = {
-      id: v4(),
+    const post: Post = {
+      id: v4.generate(),
       name,
       body,
       createdAt: new Date(),
@@ -32,7 +32,7 @@ export class PostsMemoryRepository {
     this.store.posts.push(post);
     if (this.store.posts.length > postsLimit) {
       this.store.posts = this.store.posts.slice(
-        this.store.posts.length - postsLimit
+        this.store.posts.length - postsLimit,
       );
     }
     return post;

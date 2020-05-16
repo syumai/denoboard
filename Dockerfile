@@ -1,9 +1,9 @@
 # Copyright (c) 2019- Andy Hayden
 # https://github.com/hayd/deno_docker
 
-FROM frolvlad/alpine-glibc:alpine-3.9
+FROM frolvlad/alpine-glibc:alpine-3.11
 
-ENV DENO_VERSION=0.16.0
+ENV DENO_VERSION=1.0.0
 
 RUN apk add --no-cache curl && \
   curl -fsSL https://github.com/denoland/deno/releases/download/v${DENO_VERSION}/deno_linux_x64.gz --output deno.gz && \
