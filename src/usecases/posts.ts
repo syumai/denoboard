@@ -1,5 +1,5 @@
-import { Post } from '../domain/post.ts';
-import { PostsRepository } from '../repositories/posts.ts';
+import { Post } from "../domain/post.ts";
+import { PostsRepository } from "../repositories/posts.ts";
 
 const nameMax = 20;
 const bodyMax = 100;

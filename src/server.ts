@@ -1,8 +1,8 @@
-import { PostsRepository } from './repositories/posts.ts';
-import { GetPosts, CreatePost } from './usecases/posts.ts';
-import { renderFile } from '../vendor/https/deno.land/x/dejs/mod.ts';
-import { Response } from '../vendor/https/denopkg.com/syumai/dinatra/response.ts';
-import { Params } from '../vendor/https/denopkg.com/syumai/dinatra/params.ts';
+import { PostsRepository } from "./repositories/posts.ts";
+import { GetPosts, CreatePost } from "./usecases/posts.ts";
+import { renderFile } from "../vendor/https/deno.land/x/dejs/mod.ts";
+import { Response } from "../vendor/https/denopkg.com/syumai/dinatra/response.ts";
+import { Params } from "../vendor/https/denopkg.com/syumai/dinatra/params.ts";
 
 export class Server {
   constructor(private postsRepo: PostsRepository) {}
@@ -10,8 +10,8 @@ export class Server {
   async showPosts(): Promise<Response> {
     const getPosts = new GetPosts(this.postsRepo);
     const posts = getPosts.invoke();
-    return await renderFile('./views/showPosts.ejs', {
-      name: '',
+    return await renderFile("./views/showPosts.ejs", {
+      name: "",
       posts,
     });
   }
@@ -23,7 +23,7 @@ export class Server {
     const posts = getPosts.invoke();
     return [
       201,
-      await renderFile('./views/showPosts.ejs', {
+      await renderFile("./views/showPosts.ejs", {
         name,
         posts,
       }),

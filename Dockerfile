@@ -1,16 +1,25 @@
 # Copyright (c) 2019- Andy Hayden
 # https://github.com/hayd/deno_docker
 
-FROM frolvlad/alpine-glibc:alpine-3.11
+FROM frolvlad/alpine-glibc:alpine-3.11_glibc-2.31
 
 ENV DENO_VERSION=1.0.0
 
-RUN apk add --no-cache curl && \
-  curl -fsSL https://github.com/denoland/deno/releases/download/v${DENO_VERSION}/deno_linux_x64.gz --output deno.gz && \
-  gunzip deno.gz && \
-  chmod 777 deno && \
-  mv deno /bin/deno && \
-  apk del curl
+RUN apk add --virtual .download --no-cache curl \
+ && curl -fsSL https://github.com/denoland/deno/releases/download/v${DENO_VERSION}/deno-x86_64-unknown-linux-gnu.zip \
+         --output deno.zip \
+ && unzip deno.zip \
+ && rm deno.zip \
+ && chmod 777 deno \
+ && mv deno /bin/deno \
+ && apk del .download
+
+RUN addgroup -g 1993 -S deno \
+ && adduser -u 1993 -S deno -G deno \
+ && mkdir /deno-dir/ \
+ && chown deno:deno /deno-dir/
+
+ENV DENO_DIR /deno-dir/
 
 COPY app.ts /app/
 COPY src /app/src
@@ -18,7 +27,7 @@ COPY vendor /app/vendor
 
 WORKDIR /app
 
-RUN deno fetch app.ts
+RUN deno cache app.ts
 
 COPY . /app
 
